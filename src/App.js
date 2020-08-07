@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       inventory: [],
     };
+    this.loadInventory = this.loadInventory.bind(this)
   }
 
   componentDidMount(){
@@ -30,7 +31,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Dashboard inventory={this.state.inventory} />
-        <Form />
+        <Form loadInventory={this.loadInventory}/>
       </div>
     );
   }
