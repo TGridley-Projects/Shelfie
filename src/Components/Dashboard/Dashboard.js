@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import Product from '../Product/Product'
+import React from "react";
+import Product from "../Product/Product";
 
-class Dashboard extends Component {
-    render(){
-        return(
-            <div>
-                <div>Dashboard</div>
-                <Product/>
-            </div>
-        )
-    };
+const Dashboard = (props) => {
+  const arr = []
+  props.inventory.map((props,i) => {
+   arr.push(props)
+  });
+  return (
+    <div>
+      <Product  inventory={arr}/>      
+    </div>
+  );
 };
-
 export default Dashboard;
