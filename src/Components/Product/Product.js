@@ -1,16 +1,15 @@
-import React,{Component} from 'react';
+import React from "react";
 
-class Product extends Component {
-    render(){
-        return(
-            <div>
-                <img src={this.props.image_url} alt={'not available'}/>
-                <h3>{this.props.item_name}</h3>
-                <h3>{this.props.price}</h3>
-
-            </div>
-        )
-    };
+const Product = (props) => {
+    const {image_url, item_name, price} = props.inventory
+  return (
+    <div>
+      <img src={image_url} alt={"not available"} />
+      <h3>{item_name}</h3>
+      <h3>{price}</h3>
+      {console.log('product', props.inventory)}
+    </div>
+  );
 };
 
 export default Product;

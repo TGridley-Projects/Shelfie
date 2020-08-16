@@ -32,6 +32,14 @@ class Form extends Component {
     });
   };
 
+  resetState = (e) => {
+    this.setState({
+      item_name: '',
+      image_url: '',
+      price: 0
+    });
+  }
+
   render() {
     return (
       <div>
@@ -57,8 +65,8 @@ class Form extends Component {
         type="text"
         />
         </section>
-        <button>Cancel</button>
-        <button>Add to Inventory</button>
+        <button onClick={(e) => this.resetState(e)}>Cancel</button>
+        <button onClick={(e) => console.log(this.state.price, this.state.item_name, this.state.image_url)}>Add to Inventory</button>
       </div>
     );
   }
