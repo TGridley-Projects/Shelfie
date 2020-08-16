@@ -3,7 +3,7 @@ import Product from "../Product/Product";
 
 const Dashboard = (props) => {
   const arr = []
-  props.inventory.map((props,i) => {
+  props.inventory.map((props) => {
    arr.push(props)
   });
   return (
