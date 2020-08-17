@@ -6,7 +6,7 @@ const Dashboard = (props) =>{
     <Product key={inventory.product_id} inventory={inventory}/>)
    })
   return (
-    <div>
+    <div className='dashboard'>
       {invent}
     </div>
   );
