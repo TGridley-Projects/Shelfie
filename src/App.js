@@ -20,7 +20,7 @@ class App extends Component {
 
   loadInventory = () => {
     axios
-      .get('/api/inventory')
+      .get("/api/inventory")
       .then((res) => {
         this.setState({ inventory: res.data });
       })
@@ -34,8 +34,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Dashboard inventory={this.state.inventory} />
-        <Form addInventory={this.loadInventory} />
-        {console.log('apps',this.state.inventory)}
+        <Form loadInventory={this.loadInventory} />
       </div>
     );
   }

@@ -5,9 +5,9 @@ module.exports = {
   },
   addProduct: (req, res) => {
     const db = req.app.get('db');
-    const { item_name, price, image_url } = req.body;
-    db.add_product([item_name, price, image_url]).then((inventory) => {
-      res.status(200).send(inventory);
+    const { image_url, item_name, price } = req.body;
+    db.create_product([ image_url, item_name, price ]).then(() => {
+      res.sendStatus(200);
     });
   },
 };

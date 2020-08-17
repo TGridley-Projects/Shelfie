@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-// import axios from 'axios';
+import axios from "axios";
+// import { getInventory } from "../../../server/controller";
+
 
 class Form extends Component {
   constructor() {
@@ -34,11 +36,20 @@ class Form extends Component {
 
   resetState = (e) => {
     this.setState({
-      item_name: '',
       image_url: '',
+      item_name: '',
       price: 0
     });
   }
+
+  createProduct = () =>{
+    const {image_url, item_name, price} = this.state;
+    axios.post('/api/product', {image_url, item_name, price}).then(() => {
+      this.props.loadInventory()
+      this.resetState()
+    })
+  }
+  
 
   render() {
     return (
@@ -66,7 +77,7 @@ class Form extends Component {
         />
         </section>
         <button onClick={(e) => this.resetState(e)}>Cancel</button>
-        <button onClick={(e) => console.log(this.state.price, this.state.item_name, this.state.image_url)}>Add to Inventory</button>
+        <button onClick={(e) => this.createProduct(e)}>Add to Inventory</button>
       </div>
     );
   }

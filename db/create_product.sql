@@ -1,4 +1,4 @@
 INSERT INTO shelfie
-(item_name, price, image_url)
+(image_url, item_name, price)
 VALUES
 ($1, $2, $3);
