@@ -39,17 +39,21 @@ class Form extends Component {
   };
 
   createProduct = () => {
+    if(this.state.image_url === '' || this.state.item_name === '' || this.state.price === ''){
+      alert('please complete the image url, product name, and price before submitting')
+    } else {
     const { image_url, item_name, price } = this.state;
-    axios.post("/api/product", { image_url, item_name, price }).then(() => {
+    axios.post('/api/inventory', { image_url, item_name, price }).then(() => {
       this.props.loadInventory();
       this.resetState();
-    });
+    });}
   };
 
   render() {
     return (
       <div className="form">
         <section>
+          
           <h4>Image:</h4>
           <input
             onChange={(e) => this.imageHandler(e)}
