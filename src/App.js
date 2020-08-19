@@ -32,12 +32,8 @@ class App extends Component {
   };
 
   editProduct = (product) => {
-    const toEdit = (product) =>
-      this.state.inventory.map(() => {
-        if (product === this.state.inventory.product_id) {
-          return this.setState({ selectedItem: this.state.inventory[product] });
-        }
-      });
+    const productIndex = this.state.inventory.findIndex((inv) => inv.product_id === product);
+    this.setState({selectedItem: this.state.inventory[productIndex]});
   };
 
   render() {

@@ -9,19 +9,20 @@ class Form extends Component {
       image_url: "",
       item_name: "",
       price: 0.0,
-      product_id: null
+      product_id: null,
     };
   }
 
-  componentDidUpdate(prevProps){
-    const {product_id, image_url, item_name, price} = this.props.selectedItem
-    if(product_id !== prevProps.product_id){
-      this.setState={
+  componentDidUpdate(prevProps, prevState) {
+    const { product_id, image_url, item_name, price } = this.props.selectedItem;
+    if (product_id !== prevProps.selectedItem.product_id) {
+      this.setState({
         image_url,
         item_name,
         price,
-        product_id
-      }
+        product_id,
+      });
+      console.log(prevState)
     }
   }
 
@@ -48,7 +49,7 @@ class Form extends Component {
       image_url: "",
       item_name: "",
       price: 0,
-      product_id: null
+      product_id: null,
     });
   };
 
@@ -81,30 +82,37 @@ class Form extends Component {
       );
     } else {
       const { product_id, image_url, item_name, price } = this.state;
-      axios.put("/api/inventory", { product_id,image_url, item_name, price }).then(() => {
-        this.props.loadInventory();
-        this.resetState();
-      });
+      axios
+        .put("/api/inventory", { product_id, image_url, item_name, price })
+        .then(() => {
+          this.props.loadInventory();
+          this.resetState();
+        });
     }
   };
 
   render() {
+    console.log(this.props.selectedItem);
     const productId = this.state.product_id;
     let productButton;
     if (productId) {
-      productButton = <button
-      className="formButtonShared"
-      onClick={(e) => this.updateProduct(e)}
-    >
-      Save Changes
-    </button>
-    }else {
-      productButton = <button
-      className="formButtonShared"
-      onClick={(e) => this.createProduct(e)}
-    >
-      Add to Inventory
-    </button>;
+      productButton = (
+        <button
+          className="formButtonShared"
+          onClick={(e) => this.updateProduct(e)}
+        >
+          Save Changes
+        </button>
+      );
+    } else {
+      productButton = (
+        <button
+          className="formButtonShared"
+          onClick={(e) => this.createProduct(e)}
+        >
+          Add to Inventory
+        </button>
+      );
     }
     return (
       <div className="form">
@@ -149,7 +157,7 @@ class Form extends Component {
             Cancel
           </button>
           {productButton}
-          </section>
+        </section>
       </div>
     );
   }

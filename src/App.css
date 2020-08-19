@@ -99,7 +99,8 @@ h4 {
 }
 
 .formImage {
-  width: 225px;
+  max-width: 225px;
+  max-height: 140px;
   margin: 10px 60px;
 }
 
