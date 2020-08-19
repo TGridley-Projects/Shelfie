@@ -10,8 +10,10 @@ class App extends Component {
     super();
     this.state = {
       inventory: [],
+      selectedItem: {},
     };
     this.loadInventory = this.loadInventory.bind(this);
+    this.editProduct = this.editProduct.bind(this);
   }
 
   componentDidMount() {
@@ -29,12 +31,28 @@ class App extends Component {
       });
   };
 
+  editProduct = (product) => {
+    const toEdit = (product) =>
+      this.state.inventory.map(() => {
+        if (product === this.state.inventory.product_id) {
+          return this.setState({ selectedItem: this.state.inventory[product] });
+        }
+      });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
-        <Dashboard inventory={this.state.inventory} loadInventory={this.loadInventory}/>
-        <Form loadInventory={this.loadInventory} />
+        <Dashboard
+          inventory={this.state.inventory}
+          loadInventory={this.loadInventory}
+          editProduct={this.editProduct}
+        />
+        <Form
+          loadInventory={this.loadInventory}
+          selectedItem={this.state.selectedItem}
+        />
       </div>
     );
   }

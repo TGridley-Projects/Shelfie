@@ -12,7 +12,7 @@ const Product = (props) => {
         </section>
         <section className='productButtons'>
         <button className='productButtonsShared' onClick={(e) => {props.deleteProduct(product_id)}}>Delete</button>
-        <button className='productButtonsShared'>Edit</button>
+        <button className='productButtonsShared' onClick={(e) => {props.editProduct(product_id)}}>Edit</button>
         </section>
       </div>
     </div>

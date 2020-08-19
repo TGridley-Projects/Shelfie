@@ -10,7 +10,7 @@ const Dashboard = (props) =>{
       };
 
   const invent = props.inventory.map((inventory) => { return(
-    <Product key={inventory.product_id} inventory={inventory} deleteProduct={deleteProduct}/>)
+    <Product key={inventory.product_id} inventory={inventory} deleteProduct={deleteProduct} editProduct={props.editProduct}/>)
    })
   return (
     <div className='dashboard'>
