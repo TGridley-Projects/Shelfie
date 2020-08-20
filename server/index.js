@@ -14,9 +14,10 @@ massive({connectionString: CONNECTION_STRING,
 
 app.use(express.json());
 
-app.get('/api/inventory', ctrl.getInventory)
-app.post('/api/inventory', ctrl.addProduct)
-app.delete('/api/inventory/:id', ctrl.deleteProduct)
+app.get('/api/inventory', ctrl.getInventory);
+app.post('/api/inventory', ctrl.addProduct);
+app.delete('/api/inventory/:id', ctrl.deleteProduct);
+app.put('/api/inventory', ctrl.editProduct);
 
 
 
